@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
     elfio patchWriter;
 
     patchWriter.create( ELFCLASS32, ELFDATA2LSB );
+    patchWriter.set_machine( EM_386 );
 
     for (int i = 0; i < modSecNum; ++i) {
         if (modSegsMark[i] == true) {
