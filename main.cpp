@@ -39,7 +39,8 @@ int main(int argc, char** argv) {
     for (int i = 0; i < modSecNum; ++i) {
         section* psec = modReader.sections[i];
         modSegStr[string(psec->get_name())] = i;
-        if (origSegStr.count(string(psec->get_name()))) {
+        if (origSegStr.count(string(psec->get_name())) &&
+            strstr(psec->get_name().c_str(), ".text") == psec->get_name().c_str()) {
             origModMap[i] = origSegStr[string(psec->get_name())];
         } else {
             origModMap[i] = -1;
