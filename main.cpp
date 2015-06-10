@@ -45,6 +45,7 @@ int main(int argc, char** argv) {
         } else {
             origModMap[i] = -1;
         }
+        origModMap[i] = -1;
     }
 
     vector<bool> modSegsMark(modSecNum);
