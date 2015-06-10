@@ -75,37 +75,41 @@ int main(int argc, char** argv) {
             section* patchPsec = patchWriter.sections.add(modPsec->get_name());
             patchPsec->set_type(modPsec->get_type());
             patchPsec->set_flags(modPsec->get_flags());
+            patchPsec->set_info(modPsec->get_info());
+            patchPsec->set_link(modPsec->get_link());
             patchPsec->set_addr_align(modPsec->get_addr_align());
+            patchPsec->set_entry_size(modPsec->get_entry_size());
+            patchPsec->set_name_string_offset(modPsec->get_name_string_offset());
             patchPsec->set_data(modPsec->get_data(), modPsec->get_size());
         }
     }
-
-    section *sym_sec = patchWriter.sections.add(".symtab");
-    section *mod_sym_sec = modReader.sections[modSegStr[".symtab"]];
-    sym_sec->set_type(mod_sym_sec->get_type());
-    sym_sec->set_info(mod_sym_sec->get_info());
-    sym_sec->set_addr_align(mod_sym_sec->get_addr_align());
-    sym_sec->set_entry_size(mod_sym_sec->get_entry_size());
-    sym_sec->set_link(mod_sym_sec->get_link());
-    sym_sec->set_data(mod_sym_sec->get_data(), mod_sym_sec->get_size());
-
-    section *str_sec = patchWriter.sections.add(".strtab");
-    section *mod_str_sec = modReader.sections[modSegStr[".strtab"]];
-    str_sec->set_type(mod_str_sec->get_type());
-    str_sec->set_info(mod_str_sec->get_info());
-    str_sec->set_addr_align(mod_str_sec->get_addr_align());
-    str_sec->set_entry_size(mod_str_sec->get_entry_size());
-    str_sec->set_link(mod_str_sec->get_link());
-    str_sec->set_data(mod_str_sec->get_data(), mod_str_sec->get_size());
-
-    section *shstr_sec = patchWriter.sections.add(".shstrtab");
-    section *mod_shstr_sec = modReader.sections[modSegStr[".shstrtab"]];
-    shstr_sec->set_type(mod_shstr_sec->get_type());
-    shstr_sec->set_info(mod_shstr_sec->get_info());
-    shstr_sec->set_addr_align(mod_shstr_sec->get_addr_align());
-    shstr_sec->set_entry_size(mod_shstr_sec->get_entry_size());
-    shstr_sec->set_link(mod_shstr_sec->get_link());
-    shstr_sec->set_data(mod_shstr_sec->get_data(), mod_shstr_sec->get_size());
+//
+//    section *sym_sec = patchWriter.sections.add(".symtab");
+//    section *mod_sym_sec = modReader.sections[modSegStr[".symtab"]];
+//    sym_sec->set_type(mod_sym_sec->get_type());
+//    sym_sec->set_info(mod_sym_sec->get_info());
+//    sym_sec->set_addr_align(mod_sym_sec->get_addr_align());
+//    sym_sec->set_entry_size(mod_sym_sec->get_entry_size());
+//    sym_sec->set_link(mod_sym_sec->get_link());
+//    sym_sec->set_data(mod_sym_sec->get_data(), mod_sym_sec->get_size());
+//
+//    section *str_sec = patchWriter.sections.add(".strtab");
+//    section *mod_str_sec = modReader.sections[modSegStr[".strtab"]];
+//    str_sec->set_type(mod_str_sec->get_type());
+//    str_sec->set_info(mod_str_sec->get_info());
+//    str_sec->set_addr_align(mod_str_sec->get_addr_align());
+//    str_sec->set_entry_size(mod_str_sec->get_entry_size());
+//    str_sec->set_link(mod_str_sec->get_link());
+//    str_sec->set_data(mod_str_sec->get_data(), mod_str_sec->get_size());
+//
+//    section *shstr_sec = patchWriter.sections.add(".shstrtab");
+//    section *mod_shstr_sec = modReader.sections[modSegStr[".shstrtab"]];
+//    shstr_sec->set_type(mod_shstr_sec->get_type());
+//    shstr_sec->set_info(mod_shstr_sec->get_info());
+//    shstr_sec->set_addr_align(mod_shstr_sec->get_addr_align());
+//    shstr_sec->set_entry_size(mod_shstr_sec->get_entry_size());
+//    shstr_sec->set_link(mod_shstr_sec->get_link());
+//    shstr_sec->set_data(mod_shstr_sec->get_data(), mod_shstr_sec->get_size());
 
     patchWriter.save(argv[3]);
 }
